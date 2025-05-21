@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uppFile | <%= title %></title>
+    <script src="/scripts/folderViewActions.js" defer></script>
+    <script src="/scripts/folderBtns.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/folder.css">    
+</head>
+<body>
+    <div class="top">
+        <% if (locals.current !== undefined) {%>
+            <a href="/user/<%= locals.currentUser.id %>/folders/<%= locals.current.parent_folder_id %>"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS87M0lKnSa5kdaU9oQ0t8VMHLzDJOjQ9k7Cw&s" alt=""> </a>
+        <% }else{ %>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS87M0lKnSa5kdaU9oQ0t8VMHLzDJOjQ9k7Cw&s" alt="">
+        <% } %>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+    <main>
+        <div class="folder">
+            <h2><%= title %> </h2>
+            <div class="controls">
+                <button type="button" id="newFolder">New Folder</button>
+                <button type="button" id="upFile">Upload File</button>
+                <% if (!locals.sharedView){%>
+                    <button type="button" id="share" data-folder="<%= locals.current.id %>">Share Folder</button>
+                    <button type="button" id="deleteButton" data-folder="<%= locals.current.id %>" data-parent="<%= locals.current.parent_folder_id %>">Delete folder</button>
+              <%  } %>  
+                </div>
+            <div id="folderOverlay" class="hidden">
+                <div class="form-container">
+                    <form action="/user/<%= locals.currentUser.id %>/folders/create" method="POST">
+                        <label for="folderName">Folder name</label>
+                        <input type="text" name="folderName" id="folderName" minlength="5" required>
+                        <input type="hidden" name="current" value="<%= locals.current.id %>">
+                        <div class="btns">
+                            <button type="button" class="dismiss">Dismiss</button>
+                            <button type="submit" id="create">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="fileOverlay" class="hidden">
+                <div class="form-container">
+                    <form action="/user/<%= locals.currentUser.id %>/folders/<%= locals.current.id %>/upload_file" method="POST" enctype="multipart/form-data">
+                        <label for="file">Upload a file</label>
+                        <input type="file" name="file">
+                        <div class="btns">
+                            <button type="button" class="dismiss">Dismiss</button>
+                          <button type="submit" id="upload">Upload</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="shareOverlay" class="hidden">
+                <div class="form-container">
+                    <form data-folder="<%= locals.current.id %>" data-user="<%= locals.currentUser.id %>" id="shareForm">
+                        <label for="duration">Select the duration</label>
+                        <input type="number" name="duration" min="1" max="7" placeholder="min 1 max 7">
+                        <div class="btns">
+                            <button type="button" class="dismiss">Dismiss</button>
+                            <button type="button" id="send">Share</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="container">
+                <% if (locals.childrenFolders){%>
+                    <% locals.childrenFolders.forEach(elem=>{%>
+                        <div class="folder-item" data-folder="<%= elem.id%>" data-user="<%= locals.currentUser.id %>">
+                            <img src="/icons/folder-1485.png" alt="icon">
+                            <p id="item-name" title="<%= elem.name %>"><%= elem.name %> </p>
+                        </div>
+                <% }) %>
+            <% } %>
+            <% if (locals.files){%>
+                    <% locals.files.forEach(elem=>{%>
+                        <div class="file-item" data-file="<%= elem.id%>" data-user="<%= locals.currentUser.id %>" data-folder="<%= locals.current.id %>">
+                            <img src="/icons\save-file-5331.png" alt="icon">
+                            <p id="item-name" title="<%= elem.name %>"><%= elem.name %> </p>
+                        </div>
+                <% }) %>
+            <% } %>
+            </div>            
+        </div>
+    </main>
+    
+</body>
+</html>

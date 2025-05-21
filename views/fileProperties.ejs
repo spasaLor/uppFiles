@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UpFile | Viewing file <%= file.name %></title>
+    <script src="/scripts/folderBtns.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/file.css">
+</head>
+<body>
+    <div class="top">
+        <a href="/user/<%= locals.currentUser.id %>/folders/<%= file.folder_id %>"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS87M0lKnSa5kdaU9oQ0t8VMHLzDJOjQ9k7Cw&s" alt=""> </a>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+    <main>
+        <div class="file-content">
+            <div class="top-row">
+                <h2><%= file.name %></h2>
+                <button id="deleteButton" data-file="<%= file.id %>" data-parent="<%= file.folder_id %>">Delete this file</button>
+                <i class="material-icons" id="deleteIcon" data-file="<%= file.id %>" data-parent="<%= file.folder_id %>">delete</i>
+            </div>
+            <div class="properties">
+                <p> <b>Url:</b> <a href="<%= file.url %>"><%= file.url %></a></p>
+                <p> <b>Size:</b> <%= file.size %> MB</p>
+                <p> <b>Uploaded:</b> <%= file.upload_time %></p>
+            </div>
+            <div class="download">
+                <a href="<%= file.url.replace('/upload/', '/upload/fl_attachment:') %>" download="<%= file.name %>" class="download-button">Download</a>
+            </div>
+        </div>
+    </main>
+    
+</body>
+</html>

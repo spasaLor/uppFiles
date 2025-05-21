@@ -1,0 +1,82 @@
+.button{
+    background-color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    color: var(--color-background);
+    border: 1px solid var(--color-primary);
+    transition: background-color 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.button:first-child{
+    margin-right: 5px;
+}
+
+.button:hover{
+    background-color: var(--color-primary-dark);
+}
+
+#log{
+    background-color: var(--color-background);
+    color: var(--color-primary);
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.container .left{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.container .left .first-row, .container .left .last-row{
+    display: flex;
+    align-items: center;
+}
+
+.first-row img{
+    height: 100px;
+}
+
+.first-row p{
+    font-size: 2rem;
+}
+
+.first-row p:last-child{
+    font-weight: 600;
+}
+
+.left h2{
+    font-size: 3rem;
+}
+
+
+.container .right{
+    width: 50%;
+}
+
+.right img{
+    max-width: 100%;
+}
+
+@media  (max-width:600px) {
+    .container .right{
+        display: none;
+    }
+
+    .container .left{
+        width: 100%;
+        align-items: center;
+    }
+    
+    .left h2, .left i{
+        text-align: center;
+    }
+}

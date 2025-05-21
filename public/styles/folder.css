@@ -1,0 +1,160 @@
+.button{
+    background-color: var(--color-background);
+    padding: 0.75rem 1.5rem;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    transition: background-color 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    gap:2em;
+    align-items: center;
+}
+
+.controls button{
+    background-color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    color: var(--color-background);
+    border: 1px solid var(--color-primary);
+    transition: background-color 0.3s ease;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+#deleteButton{
+    background-color: var(--color-error);
+    border: 1px solid var(--color-error);
+    transition: background-color 0.3s ease;
+}
+
+#deleteButton:hover{
+    background-color: #dd4040;
+}
+
+main h2{
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.folder{
+    min-height: 100%;
+    padding: 1rem 0;
+}
+
+.form-container {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: translate(-50%,-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}   
+
+.form-container form{
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+    padding: 2rem;
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+}
+
+.form-container form input{
+    width: 200px;
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+}
+
+#fileOverlay .form-container form input{
+    font-size: 14px;
+}
+
+.btns{
+    align-self: flex-end;
+}
+
+.btns button{
+    color: var(--color-primary);
+    border: none;
+    cursor: pointer;
+    background-color: var(--color-surface);
+    font-weight: bold;
+}
+
+.folder .container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    margin-top: 2em;
+    gap:5px;
+}
+
+.container .file-item, .container .folder-item{
+    height: 200px;
+    background-color: var(--color-border);
+    border-radius: var(--border-radius);
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+}
+
+.container .file-item img, .container .folder-item img{
+    object-fit: contain;
+}
+
+
+.container .file-item:hover, .container .folder-item:hover{
+    background-color: #d4e0fa;
+}
+
+#item-name{
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: 500;
+    border-top: 1px solid black;
+    padding-top: 0.7em;
+}
+
+#upFile{
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    transition: background-color 0.3s ease;
+}
+
+#upFile:hover{
+    background-color: #eef0f1;
+}
+
+input:invalid{
+    border: 2px solid var(--color-error);
+    outline: none;
+}
+
+@media (max-width:470px) {
+    .controls{
+        gap:0.8em;
+        flex-direction: column;
+    }
+    .controls button{
+        width: 142px;
+        white-space: nowrap;
+    }
+    .folder .container{
+        grid-template-columns: repeat(auto-fill,minmax(200px,300px));
+    }
+    
+}

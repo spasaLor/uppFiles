@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uppFiles | Error</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/loginReg.css">
+</head>
+<body>
+    <div class="top">
+        <a href="/"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS87M0lKnSa5kdaU9oQ0t8VMHLzDJOjQ9k7Cw&s" alt=""></a>
+        <p>upp</p><p>Files</p>
+    </div>
+    <main>
+        <h1>Oops there's a problem!</h1>
+        <p class="error">
+            <%= error.message %>
+        </p>
+        <p>Go back to the <a style="text-decoration: none; color: var(--color-primary);" href="/user/<%= locals.currentUser.id %>/folders">Home</a></p>
+    </main>
+</body>
+</html>
