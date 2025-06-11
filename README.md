@@ -24,6 +24,7 @@ Check out the hosted version: [uppfiles.onrender.com](https://uppfiles.onrender.
 - **Backend:** Node.js, Express
 - **Frontend:** EJS templating
 - **Database:** PostgreSQL (hosted on Neon)
+- **ORM:** Prisma for database interactions
 - **Authentication:** Passport.js for session management
 
 ---
